@@ -14,10 +14,10 @@ set :use_sudo, false
 set :bundle_cmd, "/var/lib/gems/2.2.0/bin/bundle"
 set :rake, "#{bundle_cmd} exec /var/lib/gems/2.2.0/bin/rake"
 
-# server "projects.af83.priv", :app, :web, :db, :primary => true
-server "sandbox", :app, :web, :db, :primary => true
+server redmine_server, :app, :web, :db, :primary => true
 
-after "deploy:update_code", "deploy:symlink_shared", "deploy:gems", "deploy:plugins"
+after "deploy:update_code", "deploy:symlink_shared", "deploy:gems"
+after "deploy:migrate", "deploy:plugins"
 
 namespace :deploy do
   # Prevent errors when chmod isn't allowed by server
