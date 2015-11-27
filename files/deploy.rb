@@ -27,10 +27,16 @@ namespace :deploy do
     run "mkdir -p #{dirs.join(' ')} && (chmod g+w #{dirs.join(' ')} || true)"
   end
 
+  def gem_file_content
+    plugin_gemfile_content = File.read(File.expand_path('../Gemfile.local', __FILE__))
+    local_gemfile_content = File.read("files/redmine/Gemfile.local") if File.exists?("files/redmine/Gemfile.local")
+    [plugin_gemfile_content, local_gemfile_content].compact.join("\n")
+  end
+
   desc "Install gems"
   task :gems, :roles => :app do
     run "mkdir -p #{shared_path}/bundle"
-    top.upload File.expand_path('../Gemfile.local', __FILE__), "#{release_path}/Gemfile.local"
+    put gem_file_content, "#{release_path}/Gemfile.local"
     run "cd #{release_path} && #{bundle_cmd} install --path=#{shared_path}/bundle --gemfile #{release_path}/Gemfile --quiet --without=test development"
   end
 
