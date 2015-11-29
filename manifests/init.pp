@@ -35,7 +35,7 @@ class redmine($database_password) {
     ensure => directory
   }
 
-  file { ['/var/lib/redmine/files', '/var/lib/redmine/tmp']:
+  file { ['/var/lib/redmine/files', '/var/lib/redmine/tmp', '/var/lib/redmine/plugin_assets']:
     owner => www-data,
     ensure => directory
   }

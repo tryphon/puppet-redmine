@@ -59,6 +59,7 @@ namespace :deploy do
     run "rm -rf #{release_path}/plugins && ln -nfs /usr/local/share/redmine/plugins #{release_path}/plugins"
 
     run "mv #{release_path}/tmp #{release_path}/tmp.orig && ln -nfs /var/lib/redmine/tmp #{release_path}/tmp"
+    run "mv #{release_path}/public/plugin_assets #{release_path}/public/plugin_assets.orig && ln -nfs /var/lib/redmine/plugin_assets #{release_path}/public/plugin_assets"
   end
 end
 
