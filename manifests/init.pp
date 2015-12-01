@@ -40,6 +40,12 @@ class redmine($database_password) {
     ensure => directory
   }
 
+  file { '/var/lib/redmine/tmp/restart.txt':
+    ensure => present,
+    group => src,
+    mode => 664
+  }
+
   # Provides several customized files installed by deploy
   file { '/usr/local/share/redmine':
     ensure => directory,
