@@ -53,8 +53,8 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/secret_token.rb #{release_path}/config/initializers/"
 
     run "ln -nfs /usr/local/share/redmine/themes/* #{release_path}/public/themes"
+    run "test -f /usr/local/share/redmine/favicon.ico && ln -nfs /usr/local/share/redmine/favicon.ico #{release_path}/public"
     # run "ln -nfs /usr/local/share/redmine/index.html.erb #{release_path}/app/views/welcome"
-    # run "ln -nfs /usr/local/share/redmine/favicon.ico #{release_path}/public"
 
     run "rm -rf #{release_path}/plugins && ln -nfs /usr/local/share/redmine/plugins #{release_path}/plugins"
 
