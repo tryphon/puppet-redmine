@@ -5,7 +5,7 @@ define redmine::plugin() {
   }
   exec { "install-redmine-plugin-$name":
     cwd => '/usr/local/share/redmine/plugins/',
-    command => "unzip ${name}.zip",
+    command => "rm -rf $name && unzip ${name}.zip",
     refreshonly => true,
     subscribe => File["/usr/local/share/redmine/plugins/${name}.zip"]
   }
