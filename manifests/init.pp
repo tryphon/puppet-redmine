@@ -37,6 +37,8 @@ class redmine($database_password) {
 
   file { ['/var/lib/redmine/files', '/var/lib/redmine/tmp', '/var/lib/redmine/plugin_assets']:
     owner => www-data,
+    group => src,
+    mode => 2775,
     ensure => directory
   }
 
