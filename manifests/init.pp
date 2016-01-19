@@ -14,6 +14,8 @@ class redmine($database_password) {
 
   include postgres
 
+  include imagemagick
+
   postgres::user { 'redmine':
     ensure => present,
     password => $database_password
