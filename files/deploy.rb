@@ -3,7 +3,7 @@ load 'deploy'
 set :application, "redmine"
 set :scm, "subversion"
 
-set :repository, "http://svn.redmine.org/redmine/branches/3.2-stable"
+set :repository, "http://svn.redmine.org/redmine/branches/3.3-stable"
 set :deploy_to, "/var/www/redmine"
 set :deploy_via, :remote_cache
 
